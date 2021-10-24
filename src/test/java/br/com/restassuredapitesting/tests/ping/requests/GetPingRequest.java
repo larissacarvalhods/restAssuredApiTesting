@@ -1,16 +1,17 @@
 package br.com.restassuredapitesting.tests.ping.requests;
 
+import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
 
 public class GetPingRequest {
 
-        public Response PingReturnApi(){
-            return given()
-                    .header("Content-Typer","aplication/json")
-                    .when()
-                    .get("ping");
-
-        }
+    @Step("Retorna a api online")
+    public Response pingReturnApi(){
+        return given()
+                .header("Content-Type", "application/json")
+                .get("ping");
+    }
 }
+
