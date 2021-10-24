@@ -10,13 +10,14 @@ import org.junit.experimental.categories.Category;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.greaterThan;
 
-public class GetBookingTest  extends BaseTest {
-GetBookingRequest getBookingRequest =  new GetBookingRequest();
+ public class GetBookingTest  extends BaseTest {
+  GetBookingRequest getBookingRequest =  new GetBookingRequest();
+
     @Test
     @Category({AllTest.class})
     public void validarListagemIdsReservas(){
 
-        getBookingRequest.BookingReturnId()
+        getBookingRequest.bookingReturnIds()
 
                 .then()
                 .statusCode(200)

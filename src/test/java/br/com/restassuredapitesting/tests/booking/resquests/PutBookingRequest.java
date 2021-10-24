@@ -6,16 +6,16 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class PutBookingRequest {
-    BookingPayloads bookingPayloads = new BookingPayloads();
 
-    public Response updateBookingToken(int Id, String token) {
-
+    BookingPayloads bookingPayloads= new BookingPayloads();
+    public  Response updateBookingToken(int id, String token)
+    {
         return given()
                 .header("Content-Type", "application/json")
-                .header("Accept", "application/json")
-                .header("Cookie", "token")
+                .header("Accept","application/json")
+                .header("Cookie"  ,token )
                 .when()
-                .body(bookingPayloads.toString())
-                .put("booking" + Id);
+                .body(bookingPayloads.payloadValidBooking().toString())
+                .put("booking/"+ id);
     }
 }

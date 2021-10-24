@@ -6,10 +6,16 @@ import static io.restassured.RestAssured.given;
 
 public class GetBookingRequest {
 
-    public Response BookingReturnId(){
+    public Response bookingReturnIds(){
         return given()
                 .when()
                 .get("booking");
 
+
+
     }
-}
+
+
+
+    }
+

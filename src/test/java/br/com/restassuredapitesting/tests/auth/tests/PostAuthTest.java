@@ -10,6 +10,7 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 @Category(AllTest.class)
 public class PostAuthTest extends BaseTest {
+
   PostAuthRequest postAuthRequest = new PostAuthRequest();
     @Test
     public  void validaRetornoDeTokenParaUsuario(){
