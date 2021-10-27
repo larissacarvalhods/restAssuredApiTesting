@@ -1,7 +1,7 @@
 package br.com.restassuredapitesting.tests.auth.tests;
 
 import base.BaseTest;
-import br.com.restassuredapitesting.suites.AllTest;
+import br.com.restassuredapitesting.suites.AllTests;
 import br.com.restassuredapitesting.suites.SmokeTests;
 import br.com.restassuredapitesting.tests.auth.request.PostAuthRequest;
 import io.qameta.allure.Feature;
@@ -10,7 +10,6 @@ import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.junit4.DisplayName;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
-import org.junit.runners.AllTests;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 
