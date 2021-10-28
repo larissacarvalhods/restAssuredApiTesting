@@ -6,6 +6,9 @@ import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 
+import java.util.Collections;
+import java.util.List;
+
 import static io.restassured.RestAssured.given;
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
@@ -30,6 +33,7 @@ public class GetBookingRequest {
         return given()
                 .queryParams(filtro,valorfiltro,filtro2,valorfiltro2)
                 .when()
+                .log().all()
                 .get("booking");
     }
 
@@ -51,6 +55,13 @@ public class GetBookingRequest {
                 .get("booking");
     }
 
+    public Response bookingReturnIdsCheckout(String filtro, List<String> lista){
+        return given()
+                .queryParam(filtro, lista.get(0), lista.get(1))
+                .when()
+                .log().all()
+                .get("booking");
+    }
 
 }
 

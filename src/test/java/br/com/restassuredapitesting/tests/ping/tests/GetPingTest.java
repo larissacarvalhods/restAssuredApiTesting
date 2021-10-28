@@ -21,7 +21,7 @@ import static io.restassured.RestAssured.given;
         @Severity(SeverityLevel.BLOCKER)
         @Category({AllTests.class})
 
-        @DisplayName("Verificar se a api esta online")
+        @DisplayName("Verificar se a api está online")
 
         public void validaApiOnline(){
             getPingRequests.pingReturnApi()

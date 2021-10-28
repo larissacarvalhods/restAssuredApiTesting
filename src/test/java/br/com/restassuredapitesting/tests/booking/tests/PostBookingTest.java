@@ -32,7 +32,7 @@ import static org.hamcrest.number.OrderingComparison.greaterThan;
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, AcceptanceTest.class})
-    @DisplayName("Criar uma nova reserva ")
+    @DisplayName("Criar uma  reserva ")
 
     public void CriarUmaNovaReserva() {
 
@@ -46,7 +46,7 @@ import static org.hamcrest.number.OrderingComparison.greaterThan;
     @Test
     @Severity(SeverityLevel.NORMAL)
     @Category({AllTests.class, E2eTests.class})
-    @DisplayName("Criar  mais de uma nova reserva em sequencia ")
+    @DisplayName("Criar  mais de uma reserva em sequencia ")
 
     public void CriarMaisUmaReservaSequencia() {
 

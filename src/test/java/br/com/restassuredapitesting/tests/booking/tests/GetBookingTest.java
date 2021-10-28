@@ -16,6 +16,8 @@ import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
 import static org.hamcrest.Matchers.greaterThan;
@@ -41,7 +43,7 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, ContractTests.class})
-    @DisplayName("Garantir o Schema de returno de listagem de reservas")
+    @DisplayName("Garantir o Schema de retorno de listagem de reservas")
 
     public void validaSchemaListaDaReserva() {
 
@@ -57,7 +59,7 @@ public class GetBookingTest extends BaseTest {
     @Category({AllTests.class, ContractTests.class})
     @DisplayName("Garantir o Schema de retorno de uma  reserva específica ")
 
-    public void RetornarReservaEspecifica() {
+    public void validaSchemaReservaEspecifica() {
 
         getBookingRequest.bookingReturnEspecificId(50)
                 .then()
@@ -68,9 +70,9 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, ContractTests.class, SchemaTets.class})
-    @DisplayName("Garantir o Schema de retorno de uma  reserva específica ")
+    @DisplayName("Listar uma reserva específica ")
 
-    public void validaSchemaReservaEspecifica() {
+    public void RetornarReservaEspecifica() {
 
         getBookingRequest.bookingReturnEspecificId(50)
                 .then()
@@ -82,7 +84,7 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class, AcceptanceTest.class})
-    @DisplayName(" Lista os ids das reservas por firstname ")
+    @DisplayName(" Listar os ids das reservas por firstname ")
     public void ListarIdsDasReservasPorFisrtName() {
 
         getBookingRequest.bookingReturnIdsFilter1("firstname", "Jim")
@@ -133,22 +135,27 @@ public class GetBookingTest extends BaseTest {
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class,AcceptanceTest.class})
-    @DisplayName("Listar os IDs de reservas por Chekout e Checkout")
+    @DisplayName("Listar os IDs de reservas por Checkout e Checkout")
     public void ListarIdsDasReservasPorCheckoutCheckout() {
 
-        getBookingRequest.bookingReturnIdsFilter2("checkout", "2018-01-01", "checkout", "2019-01-01")
+        List<String> listaDataCheckouts = new ArrayList<String>();
+        listaDataCheckouts.add("2018-01-01");
+        listaDataCheckouts.add("2018-01-01");
+
+        getBookingRequest.bookingReturnIdsCheckout("checkout",  listaDataCheckouts)
                 .then()
-                .statusCode(500)
-                .body("size()", greaterThan(0));
+                .statusCode(500);
+
     }
 
     @Test
     @Severity(SeverityLevel.BLOCKER)
     @Category({AllTests.class,AcceptanceTest.class})
     @DisplayName("Listar os IDs de reservas por FisrtName, Chekin e Checkout")
+
     public void ListarIdsDasReservasPorFisrtNameChekinCheckout() {
 
-        getBookingRequest.bookingReturnIdsFilter3("firstname", "Jim","checkin", "2018-01-01","checkout", "2019-05-14")
+        getBookingRequest.bookingReturnIdsFilter3("firstname", "Jim","checkin", "2018-01-01","checkout", "2019-01-01")
                 .then()
                 .statusCode(200)
                 .body("size()", greaterThan(0));

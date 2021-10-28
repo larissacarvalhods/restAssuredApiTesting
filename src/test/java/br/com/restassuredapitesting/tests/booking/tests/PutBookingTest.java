@@ -27,7 +27,7 @@ import static org.hamcrest.Matchers.greaterThan;
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({AllTests.class})
-        @DisplayName("Alternar uma reserva somente utilizando o token")
+        @DisplayName("Alterar uma reserva utilizando o token")
 
         public void ValidarAlteracaoUmaReservaUtilizandoToken() {
             int primeiroId = getBookingRequest.bookingReturnIds()
@@ -47,7 +47,7 @@ import static org.hamcrest.Matchers.greaterThan;
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({AllTests.class, E2eTests.class})
-        @DisplayName("Alterar uma reserva  utilizando o token invalido")
+        @DisplayName("Alterar uma reserva  utilizando o token inválido")
 
         public void AlterarUmaReservaTokenInvalido() {
             int primeiroId= getBookingRequest.bookingReturnIds()
@@ -93,8 +93,10 @@ import static org.hamcrest.Matchers.greaterThan;
         @Test
         @Severity(SeverityLevel.NORMAL)
         @Category({AllTests.class, AcceptanceTest.class})
-        @DisplayName("Alternar uma reserva utilizando o Basic User")
+        @DisplayName("Alterar uma reserva utilizando o Basic Auth")
+
         public void ValidarAlteracaoUmaReservaUtilizandoBasic() {
+
             int primeiroId= getBookingRequest.bookingReturnIds()
                     .then()
                     .statusCode(200)
@@ -104,7 +106,6 @@ import static org.hamcrest.Matchers.greaterThan;
             putBookingRequest.updateBookingBasicAuth(primeiroId )
                     .then()
                     .statusCode(200)
-                    .log().all()
                     .body("size()", greaterThan(0));
 
         }
